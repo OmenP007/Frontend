@@ -302,7 +302,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       controller: _cardsCtrl,
                       child: _ActionCard(
                         icon: Icons.people_alt_rounded,
-                        emoji: '👨‍🌾',
                         label: 'Agriculteurs',
                         sublabel: 'Rechercher & gérer',
                         gradient: const LinearGradient(
@@ -317,7 +316,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       controller: _cardsCtrl,
                       child: _ActionCard(
                         icon: Icons.storefront_rounded,
-                        emoji: '🌽',
                         label: 'Produits',
                         sublabel: 'Parcourir le catalogue',
                         gradient: const LinearGradient(
@@ -332,7 +330,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       controller: _cardsCtrl,
                       child: _ActionCard(
                         icon: Icons.person_add_alt_1_rounded,
-                        emoji: '✍️',
                         label: 'Nouvel Agriculteur',
                         sublabel: 'Créer un compte',
                         gradient: const LinearGradient(
@@ -347,7 +344,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       controller: _cardsCtrl,
                       child: _ActionCard(
                         icon: Icons.payments_rounded,
-                        emoji: '💰',
                         label: 'Remboursement',
                         sublabel: 'Enregistrer un paiement',
                         gradient: const LinearGradient(
@@ -362,7 +358,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     crossAxisCount: 2,
                     crossAxisSpacing: 14,
                     mainAxisSpacing: 14,
-                    childAspectRatio: 0.95,
+                    childAspectRatio: 1.4,
                   ),
                 ),
               ),
@@ -478,7 +474,6 @@ class _StaggeredCard extends StatelessWidget {
 // ── Action Card ─────────────────────────────────────────────────────────────
 class _ActionCard extends StatefulWidget {
   final IconData icon;
-  final String emoji;
   final String label;
   final String sublabel;
   final LinearGradient gradient;
@@ -486,7 +481,6 @@ class _ActionCard extends StatefulWidget {
 
   const _ActionCard({
     required this.icon,
-    required this.emoji,
     required this.label,
     required this.sublabel,
     required this.gradient,
@@ -568,12 +562,21 @@ class _ActionCardState extends State<_ActionCard>
                     Container(
                       width: 48, height: 48,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(14),
-                        border: Border.all(color: Colors.white24, width: 1),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.15),
+                            blurRadius: 8, offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
                       child: Center(
-                        child: Text(widget.emoji, style: const TextStyle(fontSize: 22)),
+                        child: Icon(
+                          widget.icon,
+                          size: 24,
+                          color: widget.gradient.colors.first,
+                        ),
                       ),
                     ),
                     const Spacer(),
