@@ -85,13 +85,7 @@ class AppTheme {
           color: const Color(0xFF1A1D1A),
         ),
       ),
-      cardTheme: CardThemeData(
-        elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: surfaceCard,
-        surfaceTintColor: Colors.transparent,
-        margin: EdgeInsets.zero,
-      ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primary,
@@ -181,13 +175,7 @@ class AppTheme {
           fontSize: 18, fontWeight: FontWeight.w700, color: const Color(0xFFE8F0EB),
         ),
       ),
-      cardTheme: CardThemeData(
-        elevation: 0,
-        color: surfaceCardDark,
-        surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        margin: EdgeInsets.zero,
-      ),
+
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: const Color(0xFF263630),
