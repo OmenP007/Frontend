@@ -354,11 +354,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       ),
                     ),
                   ]),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: MediaQuery.of(context).size.width > 900 ? 4 : (MediaQuery.of(context).size.width > 600 ? 3 : 2),
                     crossAxisSpacing: 14,
                     mainAxisSpacing: 14,
-                    childAspectRatio: 1.4,
+                    childAspectRatio: MediaQuery.of(context).size.width > 600 ? 1.1 : 1.4,
                   ),
                 ),
               ),
