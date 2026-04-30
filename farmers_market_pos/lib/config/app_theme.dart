@@ -42,6 +42,35 @@ class AppTheme {
     end: Alignment.bottomCenter,
   );
 
+  static const LinearGradient splashGradient = LinearGradient(
+    colors: [Color(0xFF081C15), Color(0xFF1B4332), Color(0xFF2D6A4F)],
+    begin: Alignment.bottomLeft,
+    end: Alignment.topRight,
+  );
+
+  // ── Shadows ────────────────────────────────────────────────────────────────
+  static List<BoxShadow> get cardShadow => [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.06),
+      blurRadius: 20,
+      offset: const Offset(0, 6),
+    ),
+    BoxShadow(
+      color: Colors.black.withOpacity(0.03),
+      blurRadius: 8,
+      offset: const Offset(0, 2),
+    ),
+  ];
+
+  static List<BoxShadow> greenGlow(Color color) => [
+    BoxShadow(
+      color: color.withOpacity(0.4),
+      blurRadius: 24,
+      spreadRadius: 2,
+      offset: const Offset(0, 8),
+    ),
+  ];
+
   // ── Avatar palette (initiales colorées) ──────────────────────────────────
   static const List<Color> avatarPalette = [
     Color(0xFF2D6A4F), Color(0xFF1565C0), Color(0xFF6A1B9A),
@@ -138,12 +167,27 @@ class AppTheme {
       ),
       dividerTheme: const DividerThemeData(space: 0, color: Color(0xFFEEEEEE)),
       scaffoldBackgroundColor: surface,
-      splashFactory: InkRipple.splashFactory,
+      splashFactory: InkSparkle.splashFactory,
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.windows: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.linux: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
         },
+      ),
+      cardTheme: CardTheme(
+        elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        color: surfaceCard,
+        margin: EdgeInsets.zero,
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        backgroundColor: const Color(0xFF1A2E26),
+        contentTextStyle: const TextStyle(color: Colors.white),
       ),
     );
   }

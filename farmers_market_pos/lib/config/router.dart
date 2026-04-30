@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../screens/auth/login_screen.dart';
+import '../screens/splash_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/farmers/farmer_search_screen.dart';
 import '../screens/farmers/farmer_detail_screen.dart';
@@ -16,16 +17,22 @@ final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authProvider);
 
   return GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/splash',
     redirect: (context, state) {
       final isLoggedIn = authState.token != null;
       final isLoginPage = state.matchedLocation == '/login';
+      final isSplash = state.matchedLocation == '/splash';
 
+      if (isSplash) return null;
       if (!isLoggedIn && !isLoginPage) return '/login';
       if (isLoggedIn && isLoginPage) return '/home';
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/splash',
+        builder: (ctx, _) => const SplashScreen(),
+      ),
       GoRoute(
         path: '/login',
         builder: (ctx, _) => const LoginScreen(),
