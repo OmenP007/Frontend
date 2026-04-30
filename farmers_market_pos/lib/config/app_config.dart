@@ -3,7 +3,7 @@ class AppConfig {
 
   // ── API ──────────────────────────────────────────────────────────────────────
   // Change this to your server IP when testing on a physical device
-  static const String baseUrl = 'https://13.60.38.149:8000/api';
+  static const String baseUrl = 'https://13-60-38-149.nip.io/api';
   // static const String baseUrl = 'http://192.168.1.x/api'; // Physical device
 
   static const Duration connectTimeout = Duration(seconds: 10);
